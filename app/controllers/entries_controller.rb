@@ -3,6 +3,10 @@ class EntriesController < ApplicationController
   def new
   end
 
+  def index
+    @entries = current_user.entries
+  end
+
   def create
     @entry = Entry.new
     @entry["title"] = params["title"]
@@ -12,5 +16,8 @@ class EntriesController < ApplicationController
     @entry.save
     redirect_to "/places/#{@entry["place_id"]}"
   end
+
+
+ 
 
 end

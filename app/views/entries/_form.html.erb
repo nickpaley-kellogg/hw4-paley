@@ -1,0 +1,16 @@
+<!-- app/views/entries/_form.html.erb -->
+<%= form_with(model: entry, local: true) do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+
+  <%= form.label :occurred_on %>
+  <%= form.date_field :occurred_on %>
+
+  <%= form.label :image %>
+  <%= form.file_field :image %> <!-- This is the file input field for the image -->
+
+  <%= form.submit %>
+<% end %>

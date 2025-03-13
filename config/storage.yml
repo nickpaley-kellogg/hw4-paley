@@ -1,10 +1,11 @@
-test:
-  service: Disk
-  root: <%= Rails.root.join("tmp/storage") %>
+# config/storage.yml
 
-local:
+development:
   service: Disk
   root: <%= Rails.root.join("storage") %>
+
+# Test and production services can be configured as needed
+
 
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:

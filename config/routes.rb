@@ -1,9 +1,14 @@
 # config/routes.rb
+
 Rails.application.routes.draw do
-  # Routes for login and signup
-  get 'login', to: 'sessions#new', as: 'login'      # Show login form
-  post 'login', to: 'sessions#create', as: 'sessions'  # Handle login form submission
-  delete 'logout', to: 'sessions#destroy', as: 'logout' # Handle logout
+  root to: redirect('/login')  # This redirects to the login page directly
+
+  # Other routes...
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+  # More routes...
+
 
   # Routes for signup
   get 'signup', to: 'users#new', as: 'signup'        # Show signup form
@@ -14,3 +19,11 @@ Rails.application.routes.draw do
   resources :entries
 end
 
+# config/routes.rb
+Rails.application.routes.draw do
+  root 'sessions#new'  # Redirect to login page on root
+
+  resources :sessions, only: [:new, :create, :destroy]  # Provides login (new), create, and logout (destroy) routes
+
+  # Other routes (e.g., places, users) go here
+end
